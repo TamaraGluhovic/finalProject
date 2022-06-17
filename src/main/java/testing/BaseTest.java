@@ -1,5 +1,6 @@
 package testing;
 
+import org.testng.annotations.AfterClass;
 import pages.*;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
@@ -45,7 +46,8 @@ import java.time.Duration;
         this.homePage = new HomePage(driver, driverWait);
     }
 
-/*
+
+
  @AfterClass
     public void afterClass(){
         driver.close();
@@ -53,5 +55,5 @@ import java.time.Duration;
 
 
 
-*/
+
 }

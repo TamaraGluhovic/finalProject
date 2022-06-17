@@ -81,7 +81,7 @@ public class Tests extends BaseTest{
 
 
         @Test(priority = 10)
-        public void verifySearchField(){
+        public void verifySearchFieldInWebTables(){
             getWebTables().clickSearch();
             getWebTables().parseInformation("Petar");
             Assert.assertEquals(getWebTables().searchResult(), "QA");
@@ -90,7 +90,7 @@ public class Tests extends BaseTest{
 
 
         @Test(priority = 11)
-        public void verifyDeleteRecord(){
+        public void verifyDeleteRecordInWebTables(){
             getWebTables().waiterForElementToBeClickable(getWebTables().getDeleteRecord());
             getWebTables().deleteNewRecord();
             Assert.assertTrue(getWebTables().isRecordDeleted());
@@ -99,11 +99,11 @@ public class Tests extends BaseTest{
         @Test (priority = 12)
         public void verifyDoubleClickButton(){
             getButtons().waiterForElementToBeClickable(getButtons().getChooseButtonsField());
-            getDriver().navigate().refresh();
+            //getDriver().navigate().refresh();
             getButtons().jsExecutorScroll();
             getButtons().clickButtonsField();
             getDriverWait().until(ExpectedConditions.elementToBeClickable(getButtons().getDoubleClickButton()));
-            getDriver().navigate().refresh();
+            //getDriver().navigate().refresh();
             getButtons().performDoubleClick();
             Assert.assertEquals(getButtons().confirmDoubleClick(),"You have done a double click");
         }
@@ -120,7 +120,7 @@ public class Tests extends BaseTest{
         }
 
         @Test(priority = 14)
-        public void verifyOneClickButton() {
+        public void verifyDynamicClickButton() {
             getButtons().waiterForElementToBeClickable(getButtons().getChooseButtonsField());
             getDriver().navigate().refresh();
             getButtons().clickButtonsField();
