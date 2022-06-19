@@ -20,7 +20,7 @@ public class Tests extends BaseTest{
             Assert.assertTrue(getHomeElements().allElementsDisplayed());
         }
 
-        //Text Box element
+        // Text Box element
         @Test (priority = 3)
         public void verifyThatUserFormAreVisibleInTextBoxSection(){
             getTextBox().elementsUrl();
@@ -97,7 +97,6 @@ public class Tests extends BaseTest{
             getWebTables().clickSearch();
             getWebTables().parseInformation("Petar");
             Assert.assertEquals(getWebTables().searchResult(), "QA");
-
         }
 
         //Web Tables element
