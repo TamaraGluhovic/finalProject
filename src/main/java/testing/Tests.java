@@ -20,6 +20,7 @@ public class Tests extends BaseTest{
             Assert.assertTrue(getHomeElements().allElementsDisplayed());
         }
 
+        //Text Box element
         @Test (priority = 3)
         public void verifyThatUserFormAreVisibleInTextBoxSection(){
             getTextBox().elementsUrl();
@@ -27,6 +28,7 @@ public class Tests extends BaseTest{
             Assert.assertTrue(getTextBox().isUserFormVisible());
         }
 
+        //Text Box element
         @Test (priority = 4)
         public void verifyThatUserFormInTextBoxElementCanBeFilled(){
             getTextBox().elementsUrl();
@@ -38,6 +40,7 @@ public class Tests extends BaseTest{
             Assert.assertTrue(getTextBox().boxWithAllInformationDisplayed());
         }
 
+        //Text Box element
         @Test (priority = 5)
         public void verifyThatMainCheckBoxCanBeSelectedAndCheckIsAllBoxesAreSelected(){
             getCheckBox().waiterForElementToBeClickable(getCheckBox().getChooseCheckBoxField());
@@ -47,6 +50,7 @@ public class Tests extends BaseTest{
             Assert.assertTrue(getCheckBox().resultMessage());
         }
 
+        //Radio Button element
         @Test (priority = 6)
         public void verifyThatClickOnYesButtonIsPossible(){
             getRadioButton().clickRadioButtonField();
@@ -55,6 +59,7 @@ public class Tests extends BaseTest{
             Assert.assertFalse(getRadioButton().isImpressiveButtonSelected());
         }
 
+        //Radio Button element
         @Test (priority = 7)
         public void verifyThatClickOnImpressiveButtonIsPossible(){
             getRadioButton().selectImpressiveRadio();
@@ -62,11 +67,13 @@ public class Tests extends BaseTest{
             Assert.assertFalse(getRadioButton().isYesButtonSelected());
         }
 
+        //Radio Button element
         @Test(priority = 8)
         public void verifyThatClickOnNoButtonIsNotPossible(){
             Assert.assertFalse(getRadioButton().radioButtonNoIsEnabled());
         }
 
+        //Web Tables element
         @Test (priority = 9)
         public void verifyAddingNewRecord(){
             getWebTables().javascriptScroll250();
@@ -76,10 +83,15 @@ public class Tests extends BaseTest{
             getWebTables().clickOnAddNewRecord();
             Assert.assertTrue(getWebTables().isRegistrationFormVisible());
             getWebTables().fillRegistrationForm("Petar", "Petrovic", "petarpetrovic@gmail.com", "32", "100000", "QA");
-            Assert.assertTrue(getWebTables().areAddedInformationVisible());
+            Assert.assertEquals(getWebTables().visibleInformations(), "Petar\n" + "Petrovic\n" +
+                    "32\n" +
+                    "petarpetrovic@gmail.com\n" +
+                    "100000\n" +
+                    "QA");
         }
 
 
+        //Web Tables element
         @Test(priority = 10)
         public void verifySearchFieldInWebTables(){
             getWebTables().clickSearch();
@@ -88,7 +100,7 @@ public class Tests extends BaseTest{
 
         }
 
-
+        //Web Tables element
         @Test(priority = 11)
         public void verifyDeleteRecordInWebTables(){
             getWebTables().waiterForElementToBeClickable(getWebTables().getDeleteRecord());
@@ -96,10 +108,11 @@ public class Tests extends BaseTest{
             Assert.assertTrue(getWebTables().isRecordDeleted());
         }
 
+        //Buttons element
         @Test (priority = 12)
         public void verifyDoubleClickButton(){
             getButtons().waiterForElementToBeClickable(getButtons().getChooseButtonsField());
-            //getDriver().navigate().refresh();
+            getDriver().navigate().refresh();
             getButtons().jsExecutorScroll();
             getButtons().clickButtonsField();
             getDriverWait().until(ExpectedConditions.elementToBeClickable(getButtons().getDoubleClickButton()));
@@ -108,6 +121,7 @@ public class Tests extends BaseTest{
             Assert.assertEquals(getButtons().confirmDoubleClick(),"You have done a double click");
         }
 
+        //Buttons element
         @Test(priority = 13)
         public void verifyRightClickButton() {
             getButtons().waiterForElementToBeClickable(getButtons().getChooseButtonsField());
@@ -119,6 +133,7 @@ public class Tests extends BaseTest{
             Assert.assertEquals(getButtons().confirmRightClick(), "You have done a right click");
         }
 
+        //Buttons element
         @Test(priority = 14)
         public void verifyDynamicClickButton() {
             getButtons().waiterForElementToBeClickable(getButtons().getChooseButtonsField());

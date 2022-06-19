@@ -4,7 +4,10 @@ import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 
 @Getter public class WebTables extends BasePage{
@@ -30,6 +33,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
     private By webTablesWrapper = By.className("web-tables-wrapper");
 
     private By registrationForm = By.id("registration-form-modal");
+
 
 
 
@@ -66,7 +70,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
         return getDriver().findElement(checkInformation).isDisplayed();
     }
 
-
+    public boolean checkIsUserInTable(String addedName){
+        List<WebElement> nameInTable = getDriver().findElements(By.className("rt-table"));
+        for (WebElement i : nameInTable){
+            if (i.getText().contains(addedName)){
+                return true;
+            }
+        }
+        return false;
+    }
 
     public void parseInformation(String name){
         getDriver().findElement(searchFieldInput).sendKeys(name);
@@ -82,7 +94,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
         return getDriver().findElement(checkInputFromTable).getText();
     }
 
-
+    public String visibleInformations(){
+        return getDriver().findElement(checkInformation).getText();
+    }
 
     public void deleteNewRecord(){
         getDriver().findElement(deleteRecord).click();
